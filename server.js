@@ -17,6 +17,6 @@ app.use(cors());
 
 app.use('/', require('./src/v1/routes/index'));
 
-app.listen(3000, () => {
-  console.log('Server is listening on port 3000');
+app.listen(process.env.PORT, () => {
+  console.log(`Hotel service is listening on port ${process.env.PORT}`);
 });
