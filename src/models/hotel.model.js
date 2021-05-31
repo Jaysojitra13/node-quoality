@@ -14,6 +14,10 @@ const hotelSchema = new Schema(
     contactNumber: {
       type: String,
     },
+    parentHotelId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'hotel',
+    },
     totalRooms: {
       type: Number,
     },

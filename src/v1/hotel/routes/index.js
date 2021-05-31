@@ -8,14 +8,14 @@ const { checkToken } = require('../../../commonUtils/jwtValidation');
 
 const hotelRoute = express.Router();
 
-hotelRoute.get('/hotel', getHotel);
+hotelRoute.get('/hotel', checkToken, getHotel);
 
 hotelRoute.post('/hotel', checkToken, validator.body(createBodyValidationSchema), createHotel);
 
-hotelRoute.get('/hotel/:id', checkHotelExist, getHotelDetail);
+hotelRoute.get('/hotel/:id', checkToken, checkHotelExist, getHotelDetail);
 
-hotelRoute.put('/hotel/:id', checkHotelExist, updateHotelDetail);
+hotelRoute.put('/hotel/:id', checkToken, checkHotelExist, updateHotelDetail);
 
-hotelRoute.delete('/hotel/:id', checkHotelExist, deleteHotel);
+hotelRoute.delete('/hotel/:id', checkToken, checkHotelExist, deleteHotel);
 
 module.exports = hotelRoute;

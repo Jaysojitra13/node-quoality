@@ -1,9 +1,12 @@
+/* eslint-disable no-useless-catch */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-await-in-loop */
+/* eslint-disable no-restricted-syntax */
 const HotelModel = require('../../../models/hotel.model');
 
 const hotelUtil = {};
 
 hotelUtil.createHotelUtil = async (body) => {
-  // eslint-disable-next-line no-useless-catch
   try {
     // Create hotel
     const hotelObj = new HotelModel(body);
@@ -15,10 +18,13 @@ hotelUtil.createHotelUtil = async (body) => {
 };
 
 hotelUtil.getHotelUtil = async () => {
-  // eslint-disable-next-line no-useless-catch
   try {
-    // Create hotel
-    const hotelList = await HotelModel.find();
+    let hotelList = await HotelModel.find({ parentHotelId: { $exists: false } });
+    hotelList = JSON.parse(JSON.stringify(hotelList));
+
+    for (const hotel of hotelList) {
+      hotel.branches = await HotelModel.find({ parentHotelId: hotel._id });
+    }
     return hotelList;
   } catch (error) {
     throw error;
@@ -26,9 +32,7 @@ hotelUtil.getHotelUtil = async () => {
 };
 
 hotelUtil.updateHotelDetail = async (id, obj) => {
-  // eslint-disable-next-line no-useless-catch
   try {
-    // Create hotel
     const hotelDetail = await HotelModel.findOneAndUpdate({ _id: id }, { $set: obj });
     return hotelDetail;
   } catch (error) {
@@ -37,10 +41,9 @@ hotelUtil.updateHotelDetail = async (id, obj) => {
 };
 
 hotelUtil.deleteHotel = async (id) => {
-  // eslint-disable-next-line no-useless-catch
   try {
-    // Create hotel
     await HotelModel.deleteOne({ _id: id });
+    await HotelModel.deleteMany({ parentHotelId: id });
     return true;
   } catch (error) {
     throw error;
