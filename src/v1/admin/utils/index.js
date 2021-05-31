@@ -46,4 +46,16 @@ adminlUtil.login = async (body, user) => {
     throw error;
   }
 };
+
+adminlUtil.addGuest = async (body) => {
+  // eslint-disable-next-line no-useless-catch
+  try {
+    delete body.password;
+    const guestObj = new UserModel(body);
+    const resposne = await guestObj.save();
+    return resposne;
+  } catch (error) {
+    throw error;
+  }
+};
 module.exports = adminlUtil;

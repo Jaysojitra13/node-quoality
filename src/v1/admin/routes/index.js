@@ -1,20 +1,19 @@
 const express = require('express');
-// const validator = require('express-joi-validation').createValidator({});
+const validator = require('express-joi-validation').createValidator({});
 const {
-  registerAdmin, login,
+  registerAdmin, login, addGuest,
 } = require('../controllers/index');
-const { checkAdminExist } = require('../middleware/index');
+const {
+  checkAdminExist, registerAdminBody, loginBody, addGuestBody, checkGuestExist,
+} = require('../middleware/index');
+const { checkToken } = require('../../../commonUtils/jwtValidation');
 
 const adminRoute = express.Router();
 
-// adminRoute.get('/hotel', getHotel);
+adminRoute.post('/register', validator.body(registerAdminBody), registerAdmin);
 
-adminRoute.post('/register', registerAdmin);
+adminRoute.post('/login', validator.body(loginBody), checkAdminExist, login);
 
-adminRoute.post('/login', checkAdminExist, login);
-
-// adminRoute.put('/hotel/:id', checkHotelExist, updateHotelDetail);
-
-// adminRoute.delete('/hotel/:id', checkHotelExist, deleteHotel);
+adminRoute.post('/add-guest', validator.body(addGuestBody), checkToken, checkGuestExist, addGuest);
 
 module.exports = adminRoute;

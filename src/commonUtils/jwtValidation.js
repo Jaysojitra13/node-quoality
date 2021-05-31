@@ -26,7 +26,7 @@ jwtMiddleware.checkToken = async (req, res, next) => {
         const decryptedData = bytes.toString(crypto.enc.Utf8);
         const finalData = JSON.parse(decryptedData);
 
-        console.log('==>', finalData);
+        req.tokenData = finalData;
         next();
       } else {
         return res.status(401).send({ message: 'Invalid auth token' });

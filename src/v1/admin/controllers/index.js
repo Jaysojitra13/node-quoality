@@ -1,5 +1,5 @@
 const {
-  createAdmin, login,
+  createAdmin, login, addGuest,
 } = require('../utils/index');
 
 const adminController = {};
@@ -21,6 +21,16 @@ adminController.login = async (req, res) => {
       return res.status(200).send({ message: 'Admin Loggedin successfully.', data: admin });
     }
     return res.status(400).send({ message: 'Invalid password' });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({ message: 'Something went wrong' });
+  }
+};
+
+adminController.addGuest = async (req, res) => {
+  try {
+    const guest = await addGuest(req.body);
+    return res.status(200).send({ message: 'Guest created successfully.', data: guest });
   } catch (error) {
     console.log(error);
     return res.status(500).send({ message: 'Something went wrong' });
