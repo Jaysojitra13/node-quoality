@@ -49,7 +49,7 @@ hotelGuestUtil.addGuest = async (data) => {
 
 hotelGuestUtil.getHotelList = async () => {
   try {
-    const resposne = await HotelModel.find({ status: true }, { _id: 1, name: 1 });
+    const resposne = await HotelModel.find({ status: true }, { _id: 1, name: 1, parentHotelId: 1 });
     return resposne;
   } catch (error) {
     throw error;
@@ -82,6 +82,15 @@ hotelGuestUtil.deleteHotelGuest = async (id) => {
   try {
     const response = await HotelGuestModel.deleteOne({ _id: id });
     return response;
+  } catch (error) {
+    throw error;
+  }
+};
+
+hotelGuestUtil.getTotalGuestCount = async () => {
+  try {
+    const count = await HotelGuestModel.find({ status: true }).countDocuments();
+    return count;
   } catch (error) {
     throw error;
   }

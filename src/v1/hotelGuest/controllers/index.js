@@ -1,5 +1,6 @@
 const {
   getGuestList, addGuest, getHotelList, getHotelGuests, udpateHotelGuest, deleteHotelGuest,
+  getTotalGuestCount,
 } = require('../utils/index');
 
 const hotelGuestController = {};
@@ -61,6 +62,16 @@ hotelGuestController.deleteHotelGuest = async (req, res) => {
   try {
     await deleteHotelGuest(req.params.id);
     return res.status(200).send({ message: 'Hotel Guest detail deleted successfully.' });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({ message: 'Something went wrong' });
+  }
+};
+
+hotelGuestController.getTotalGuestCount = async (req, res) => {
+  try {
+    const data = await getTotalGuestCount();
+    return res.status(200).send({ message: 'Total guest count get successfully.', totalGuest: data });
   } catch (error) {
     console.log(error);
     return res.status(500).send({ message: 'Something went wrong' });
