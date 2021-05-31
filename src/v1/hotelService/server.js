@@ -14,6 +14,6 @@ app.use(cors());
 
 app.use('/', require('./routes/index'));
 
-app.listen(process.env.HOTEL_PORT, () => {
-  console.log(`Hotel is listening on port ${process.env.HOTEL_PORT}`);
+app.listen(process.env.HOTEL_SERVICE_PORT, () => {
+  console.log(`Hotel Service is listening on port ${process.env.HOTEL_SERVICE_PORT}`);
 });
