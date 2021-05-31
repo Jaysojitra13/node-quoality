@@ -40,7 +40,7 @@ hotelServiceMiddleware.checkHotelServiceExist = async (req, res, next) => {
       hotelSerivceId = req.body.hotelSerivceId;
     }
 
-    const hotelServiceData = await HotelServiceModel.findOne({ _id: hotelSerivceId });
+    const hotelServiceData = await HotelServiceModel.findOne({ _id: hotelSerivceId }).populate('hotelId', '_id name');
     if (hotelServiceData) {
       req.hotelService = hotelServiceData;
       next();

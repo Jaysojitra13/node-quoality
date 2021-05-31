@@ -16,7 +16,7 @@ hotelServiceController.createHotelService = async (req, res) => {
 
 hotelServiceController.getHotelService = async (req, res) => {
   try {
-    const hotelList = await getHotelServiceUtil();
+    const hotelList = await getHotelServiceUtil(req.query.hotelId);
     return res.status(200).send({ message: 'Hotel Service list get successfully', data: hotelList });
   } catch (error) {
     console.log(error);
@@ -36,8 +36,6 @@ hotelServiceController.getHotelServiceDetail = async (req, res) => {
 
 hotelServiceController.updateHotelServiceDetail = async (req, res) => {
   try {
-    console.log(req.params.id, req.body);
-
     const hotelDetail = await updateHotelServiceDetail(req.params.id, req.body);
     return res.status(200).send({ message: 'Hotel Service detail updated successfully', data: hotelDetail });
   } catch (error) {
