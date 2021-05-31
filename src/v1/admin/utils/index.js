@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-catch */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-param-reassign */
 const bcrypt = require('bcrypt');
@@ -7,9 +8,7 @@ const { generateToken } = require('../../../commonUtils/jwtValidation');
 const adminlUtil = {};
 
 adminlUtil.createAdmin = async (body) => {
-  // eslint-disable-next-line no-useless-catch
   try {
-    // Create admin
     const saltRounds = 10;
     const salt = await bcrypt.genSaltSync(saltRounds);
     const password = await bcrypt.hash(body.password, salt);
@@ -24,7 +23,6 @@ adminlUtil.createAdmin = async (body) => {
 };
 
 adminlUtil.login = async (body, user) => {
-  // eslint-disable-next-line no-useless-catch
   try {
     const checkPassword = await bcrypt.compare(body.password, user.password);
 
@@ -48,7 +46,6 @@ adminlUtil.login = async (body, user) => {
 };
 
 adminlUtil.addGuest = async (body) => {
-  // eslint-disable-next-line no-useless-catch
   try {
     delete body.password;
     const guestObj = new UserModel(body);

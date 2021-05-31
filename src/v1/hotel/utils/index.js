@@ -8,7 +8,6 @@ const hotelUtil = {};
 
 hotelUtil.createHotelUtil = async (body) => {
   try {
-    // Create hotel
     const hotelObj = new HotelModel(body);
     const resposne = await hotelObj.save();
     return resposne;
