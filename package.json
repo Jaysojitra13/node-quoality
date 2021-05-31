@@ -8,6 +8,7 @@
     "hotel": "cd src/v1/hotel && nodemon server.js",
     "hotel-service": "cd src/v1/hotelService && nodemon server.js",
     "admin": "cd src/v1/admin && nodemon server.js",
+    "hotel-guest": "cd src/v1/hotelGuest && nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

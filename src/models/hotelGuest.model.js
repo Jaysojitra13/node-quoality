@@ -3,14 +3,18 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 // Schema
-const hotelServiceSchema = new Schema(
+const hotelGuestSchema = new Schema(
   {
-    name: {
-      type: String,
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'user',
     },
     hotelId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'hotel',
+    },
+    bookedDate: {
+      type: Date,
     },
     status: {
       type: Boolean,
@@ -22,5 +26,5 @@ const hotelServiceSchema = new Schema(
   },
 );
 
-const hotelServiceModel = mongoose.model('hotelService', hotelServiceSchema);
-module.exports = hotelServiceModel;
+const hotelGuestModel = mongoose.model('hotelGuest', hotelGuestSchema);
+module.exports = hotelGuestModel;
