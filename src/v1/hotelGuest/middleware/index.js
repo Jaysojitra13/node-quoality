@@ -22,12 +22,12 @@ hotelGuestMiddleware.checkHotelExist = async (req, res, next) => {
   try {
     const hotelDate = await HotelModel.findOne({ _id: req.body.hotelId });
     if (!hotelDate) {
-      return res.status(404).send({ message: 'hotel not found' });
+      return res.status(404).send({ message: global.l10n.t('HOTEL_NOT_FOUND') });
     }
     next();
   } catch (error) {
     console.log(error);
-    return res.status(500).send({ message: 'Something went wrong' });
+    return res.status(500).send({ message: global.l10n.t('SOMETHING_WENT_WRONG') });
   }
 };
 
@@ -35,12 +35,12 @@ hotelGuestMiddleware.checkGuestExist = async (req, res, next) => {
   try {
     const guest = await UserModel.findOne({ _id: req.body.userId, role: 'guest' });
     if (!guest) {
-      return res.status(404).send({ message: 'Guest not found' });
+      return res.status(404).send({ message: global.l10n.t('GUEST_NOT_FOUND') });
     }
     next();
   } catch (error) {
     console.log(error);
-    return res.status(500).send({ message: 'Something went wrong' });
+    return res.status(500).send({ message: global.l10n.t('SOMETHING_WENT_WRONG') });
   }
 };
 
@@ -48,13 +48,13 @@ hotelGuestMiddleware.checkHotelGuestExist = async (req, res, next) => {
   try {
     const data = await hotelGuestModel.findOne({ _id: req.params.id });
     if (!data) {
-      return res.status(404).send({ message: 'Hotel Guest not found' });
+      return res.status(404).send({ message: global.l10n.t('HOTEL_GUEST_NOT_FOUND') });
     }
     req.hoteGuest = data;
     next();
   } catch (error) {
     console.log(error);
-    return res.status(500).send({ message: 'Something went wrong' });
+    return res.status(500).send({ message: global.l10n.t('SOMETHING_WENT_WRONG') });
   }
 };
 module.exports = hotelGuestMiddleware;

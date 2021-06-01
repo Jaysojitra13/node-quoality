@@ -12,5 +12,20 @@
     "HOTEL_DETAIL": "Hotel detail get successfully",
     "HOTEL_CREATE": "Hotel created successfully.",
     "HOTEL_UPDATE":"Hotel detail updated successfully",
-    "HOTEL_DELETE": "Hotel deleted successfully"
+    "HOTEL_DELETE": "Hotel deleted successfully",
+    "GUEST_NOT_FOUND": "Guest not found",
+    "HOTEL_GUEST_NOT_FOUND": "Hotel Guest not found",
+    "GUEST_LIST": "Guest list get successfully.",
+    "GUEST_ADD": "Guest added successfully.",
+    "HOTEL_GUEST_LIST": "Hotel Guest list get successfully.",
+    "HOTEL_GUEST_UPDATE": "Hotel Guest detail updated successfully.",
+    "HOTEL_GUEST_DELETE" : "Hotel Guest detail deleted successfully.",
+    "HOTEL_ALREADY_ASSIGN": "Hotel is already booked for this guest on this date.",
+    "TOTAL_GUEST_COUNT": "Total guest count get successfully.",
+    "HOTEL_SERVICE_NOT_FOUND": "Hotel Service not found",
+    "HOTEL_SERVICE_CREATED": "Hotel Service created successfully.",
+    "HOTEL_SERIVCE_LIST": "Hotel Service list get successfully",
+    "HOTEL_SERIVCE_GET_DETAIL": "Hotel Service detail get successfully",
+    "HOTEL_SERIVCE_UPDATE": "Hotel Service detail updated successfully",
+    "HOTEL_SERIVCE_DELETE" : "Hotel Service deleted successfully"
 }

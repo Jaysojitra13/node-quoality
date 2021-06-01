@@ -23,11 +23,11 @@ hotelServiceMiddleware.checkHotelExist = async (req, res, next) => {
       req.hotel = hotelData;
       next();
     } else {
-      return res.status(404).send({ message: 'Hotel not found' });
+      return res.status(404).send({ message: global.l10n.t('HOTEL_NOT_FOUND') });
     }
   } catch (error) {
     console.log(error);
-    return res.status(500).send({ message: 'Something went wrong' });
+    return res.status(500).send({ message: global.l10n.t('SOMETHING_WENT_WRONG') });
   }
 };
 
@@ -45,11 +45,11 @@ hotelServiceMiddleware.checkHotelServiceExist = async (req, res, next) => {
       req.hotelService = hotelServiceData;
       next();
     } else {
-      return res.status(404).send({ message: 'Hotel Service not found' });
+      return res.status(404).send({ message: global.l10n.t('HOTEL_SERVICE_NOT_FOUND') });
     }
   } catch (error) {
     console.log(error);
-    return res.status(500).send({ message: 'Something went wrong' });
+    return res.status(500).send({ message: global.l10n.t('SOMETHING_WENT_WRONG') });
   }
 };
 module.exports = hotelServiceMiddleware;
