@@ -23,6 +23,8 @@ git clone https://github.com/Jaysojitra13/node-quoality.git
 Postman collection link:
 - https://documenter.getpostman.com/view/2235490/TzY1hwHS#db9a5e0d-7198-4402-b4c4-db6ebc1bae28
 
+Architecture
 ![Architecture](architecture.png)
 
+DBArchitecture
 ![DB Architecture](DB-diagram.png)
