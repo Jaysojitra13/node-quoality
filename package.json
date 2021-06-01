@@ -4,7 +4,6 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
     "hotel": "cd src/v1/hotel && nodemon server.js",
     "hotel-service": "cd src/v1/hotelService && nodemon server.js",
     "admin": "cd src/v1/admin && nodemon server.js",
