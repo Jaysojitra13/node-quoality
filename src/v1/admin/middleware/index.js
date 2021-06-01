@@ -29,11 +29,11 @@ userMiddleware.checkAdminExist = async (req, res, next) => {
       req.admin = JSON.parse(JSON.stringify(admin));
       next();
     } else {
-      return res.status(404).send({ message: 'Admin not found' });
+      return res.status(404).send({ message: global.l10n.t('ADMIN_NOT_FOUND') });
     }
   } catch (error) {
     console.log(error);
-    return res.status(500).send({ message: 'Something went wrong' });
+    return res.status(500).send({ message: global.l10n.t('SOMETHING_WENT_WRONG') });
   }
 };
 
@@ -41,12 +41,12 @@ userMiddleware.checkGuestExist = async (req, res, next) => {
   try {
     const guest = await UserModel.findOne({ email: req.body.email });
     if (guest) {
-      return res.status(400).send({ message: 'Guest already exist with this email id' });
+      return res.status(400).send({ message: global.l10n.t('GUEST_EXIST') });
     }
     next();
   } catch (error) {
     console.log(error);
-    return res.status(500).send({ message: 'Something went wrong' });
+    return res.status(500).send({ message: global.l10n.t('SOMETHING_WENT_WRONG') });
   }
 };
 module.exports = userMiddleware;

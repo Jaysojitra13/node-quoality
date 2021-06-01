@@ -28,11 +28,11 @@ hotelMiddleware.checkHotelExist = async (req, res, next) => {
       req.hotel = hotelData;
       next();
     } else {
-      return res.status(404).send({ message: 'Hotel not found' });
+      return res.status(404).send({ message: global.l10n.t('HOTEL_NOT_FOUND') });
     }
   } catch (error) {
     console.log(error);
-    return res.status(500).send({ message: 'Something went wrong' });
+    return res.status(500).send({ message: global.l10n.t('SOMETHING_WENT_WRONG') });
   }
 };
 
@@ -43,14 +43,14 @@ hotelMiddleware.checkParentHotelExist = async (req, res, next) => {
       if (hotelData) {
         next();
       } else {
-        return res.status(404).send({ message: 'Parent Hotel not found' });
+        return res.status(404).send({ message: global.l10n.t('PARENT_HOTEL_NOT_FOUND') });
       }
     } else {
       next();
     }
   } catch (error) {
     console.log(error);
-    return res.status(500).send({ message: 'Something went wrong' });
+    return res.status(500).send({ message: global.l10n.t('SOMETHING_WENT_WRONG') });
   }
 };
 

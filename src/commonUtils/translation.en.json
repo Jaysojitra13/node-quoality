@@ -1,0 +1,16 @@
+{
+    "ADMIN_CREATE": "Admin created successfully",
+    "ADMIN_LOGIN": "Admin loggedIn successfully.",
+    "SOMETHING_WENT_WRONG": "Something went wrong.",
+    "GUEST_CREATE": "Guest created successfully.",
+    "ADMIN_NOT_FOUND": "Admin not found",
+    "GUEST_EXIST": "Guest already exist with this email id",
+    "INVALID_PASSWORD": "Invalid password",
+    "HOTEL_NOT_FOUND": "Hotel not found",
+    "PARENT_HOTEL_NOT_FOUND": "Parent Hotel not found",
+    "HOTEL_LIST": "Hotel list get successfully",
+    "HOTEL_DETAIL": "Hotel detail get successfully",
+    "HOTEL_CREATE": "Hotel created successfully.",
+    "HOTEL_UPDATE":"Hotel detail updated successfully",
+    "HOTEL_DELETE": "Hotel deleted successfully"
+}

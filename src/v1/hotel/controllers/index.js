@@ -7,7 +7,7 @@ const hotelController = {};
 hotelController.createHotel = async (req, res) => {
   try {
     const hotel = await createHotelUtil(req.body);
-    return res.status(200).send({ message: 'Hotel created successfully.', data: hotel });
+    return res.status(200).send({ message: global.l10n.t('HOTEL_CREATE'), data: hotel });
   } catch (error) {
     console.log(error);
     throw error;
@@ -17,40 +17,40 @@ hotelController.createHotel = async (req, res) => {
 hotelController.getHotel = async (req, res) => {
   try {
     const hotelList = await getHotelUtil();
-    return res.status(200).send({ message: 'Hotel list get successfully', data: hotelList });
+    return res.status(200).send({ message: global.l10n.t('HOTEL_LIST'), data: hotelList });
   } catch (error) {
     console.log(error);
-    return res.status(500).send({ message: 'Something went wrong' });
+    return res.status(500).send({ message: global.l10n.t('SOMETHING_WENT_WRONG') });
   }
 };
 
 hotelController.getHotelDetail = async (req, res) => {
   try {
     const hotelDetail = req.hotel;
-    return res.status(200).send({ message: 'Hotel detail get successfully', data: hotelDetail });
+    return res.status(200).send({ message: global.l10n.t('HOTEL_DETAIL'), data: hotelDetail });
   } catch (error) {
     console.log(error);
-    return res.status(500).send({ message: 'Something went wrong' });
+    return res.status(500).send({ message: global.l10n.t('SOMETHING_WENT_WRONG') });
   }
 };
 
 hotelController.updateHotelDetail = async (req, res) => {
   try {
     const hotelDetail = await updateHotelDetail(req.params.id, req.body);
-    return res.status(200).send({ message: 'Hotel detail updated successfully', data: hotelDetail });
+    return res.status(200).send({ message: global.l10n.t('HOTEL_UPDATE'), data: hotelDetail });
   } catch (error) {
     console.log(error);
-    return res.status(500).send({ message: 'Something went wrong' });
+    return res.status(500).send({ message: global.l10n.t('SOMETHING_WENT_WRONG') });
   }
 };
 
 hotelController.deleteHotel = async (req, res) => {
   try {
     await deleteHotel(req.params.id);
-    return res.status(200).send({ message: 'Hotel deleted successfully' });
+    return res.status(200).send({ message: global.l10n.t('HOTEL_DELETE') });
   } catch (error) {
     console.log(error);
-    return res.status(500).send({ message: 'Something went wrong' });
+    return res.status(500).send({ message: global.l10n.t('SOMETHING_WENT_WRONG') });
   }
 };
 module.exports = hotelController;
